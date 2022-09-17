@@ -6,6 +6,9 @@ extern "C" {
 #endif
 
 #include <stdbool.h>
+#ifdef WIN32
+	#include "windows.h"
+#endif
 
 struct simple_uart;
 
