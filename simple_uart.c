@@ -444,7 +444,7 @@ int simple_uart_list(char ***namesp, char ***descriptionp)
     int count = 0;
 
 #ifdef __linux__
-    if (glob("/sys/class/tty/ttyS[0-9]*", 0, NULL, &g) >= 0) {
+    if (glob("/dev/ttyS*", 0, NULL, &g) >= 0) {
         char buffer[100];
         char **new_names;
         new_names = realloc(names, (count + g.gl_pathc) * sizeof(char *));
@@ -462,7 +462,7 @@ int simple_uart_list(char ***namesp, char ***descriptionp)
         globfree (&g);
     }
 
-    if (glob ("/sys/class/tty/ttyUSB[0-9]*", 0, NULL, &g) >= 0) {
+    if (glob ("/dev/ttyUSB*", 0, NULL, &g) >= 0) {
         char buffer[100];
         char **new_names;
         new_names = realloc(names, (count + g.gl_pathc) * sizeof (char *));
